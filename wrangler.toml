@@ -1,0 +1,9 @@
+name = "apiu"
+compatibility_date = "2023-02-28"
+type = "javascript"
+account_id = "d810e4554531eb6a046408c1a587edd5"
+workers_dev = true
+
+[site]
+bucket = "./public"
+entry-point = "index.html"

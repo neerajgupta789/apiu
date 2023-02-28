@@ -1,0 +1,22 @@
+<script>
+      addEventListener('fetch', event => {
+  event.respondWith(handleRequest(event.request))
+})
+
+async function handleRequest(request) {
+  // Get the value from KV storage
+  const myValue = await MY_KV_NAMESPACE.get('0f7e16')
+
+  // Create the HTML response
+  const response = new Response(`
+    <html>
+      <body>
+        <h1>My Value from KV: ${myValue}</h1>
+      </body>
+    </html>
+  `, { headers: { 'Content-Type': 'text/html' } })
+
+  return response
+}
+
+</script>
