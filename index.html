@@ -17,13 +17,31 @@
 //                    .then(response => response.text())
 //                    .then(value => console.log(value));
             
-            const kvNamespaceId = 'a9bc7b6f630442d088c3871543712b00'; // replace with your Namespace ID
-            const kvKeyName = '0f7e16'; // replace with the name of your key
-            const workerUrl = 'https://testkv.apiu.workers.dev'; // replace with your Worker URL
+//             const kvNamespaceId = 'a9bc7b6f630442d088c3871543712b00'; // replace with your Namespace ID
+//             const kvKeyName = '0f7e16'; // replace with the name of your key
+//             const workerUrl = 'https://testkv.apiu.workers.dev'; // replace with your Worker URL
+
+// fetch(`${workerUrl}/accounts/self/storage/kv/namespaces/${kvNamespaceId}/values/${kvKeyName}`)
+//   .then(response => response.text())
+//   .then(value => console.log(value));
+            
+            
+const kvNamespaceId = 'a9bc7b6f630442d088c3871543712b00'; // replace with your Namespace ID
+const kvKeyName = '0f7e16'; // replace with the name of your key
+const workerUrl = 'https://testkv.apiu.workers.dev'; // replace with your Worker URL
+const resultDiv = document.getElementById('result'); // replace with the ID of the element to display the result
 
 fetch(`${workerUrl}/accounts/self/storage/kv/namespaces/${kvNamespaceId}/values/${kvKeyName}`)
   .then(response => response.text())
-  .then(value => console.log(value));
+  .then(text => {
+    const data = JSON.parse(text);
+    resultDiv.innerText = JSON.stringify(data, null, 2);
+  })
+  .catch(error => {
+    console.error(error);
+    resultDiv.innerText = 'Error: ' + error.message;
+  });
+
 
 
         </script>
