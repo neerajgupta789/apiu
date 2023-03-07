@@ -36,6 +36,8 @@ fetch(`${workerUrl}/accounts/self/storage/kv/namespaces/${kvNamespaceId}/values/
   .then(response => response.text())
   .then(text => {
     const data = JSON.parse(text);
+    alert(text);
+    console.log(text);
     resultDiv.innerText = JSON.stringify(data, null, 2);
   })
   .catch(error => {
