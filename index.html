@@ -4,5 +4,19 @@
     </head>
     <body>
     <h1>Hello World<h1>
+        <script>
+            const kvNamespaceId = 'a9bc7b6f630442d088c3871543712b00'; // replace with your Namespace ID
+            const kvKeyName = '0f7e16'; // replace with the name of your key
+            const apiToken = '05531969934df3d7d2b2656c4dcf569528138'; // replace with your API token
+
+               fetch(`https://api.cloudflare.com/client/v4/accounts/self/storage/kv/namespaces/${kvNamespaceId}/values/${kvKeyName}`, {
+                     headers: {
+                     Authorization: `Bearer ${apiToken}`,
+                              },
+                             })
+                   .then(response => response.text())
+                   .then(value => console.log(value));
+
+        </script>
     </body>
     </html>
