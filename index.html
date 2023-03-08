@@ -45,17 +45,37 @@
 //     resultDiv.innerText = 'Error: ' + error.message;
 //   });
 
-fetch('https://my-urlshortnerworker.apiu.workers.dev/6ec096')
-  .then(response => response.json())
-  .then(result => {
-    // Do something with the result object
-    console.log(result);
-    // Update a DOM element with the result
-    document.getElementById('resultDiv').innerHTML = JSON.stringify(result);
-  })
-  .catch(error => console.log('Error:', error));
+// fetch('https://my-urlshortnerworker.apiu.workers.dev/6ec096')
+//   .then(response => response.json())
+//   .then(result => {
+//     // Do something with the result object
+//     console.log(result);
+//     // Update a DOM element with the result
+//     document.getElementById('resultDiv').innerHTML = JSON.stringify(result);
+//   })
+//   .catch(error => console.log('Error:', error));
 
 
+            addEventListener('fetch', event => {
+  event.respondWith(handleRequest(event.request))
+})
+
+async function handleRequest(request) {
+  const url = new URL(request.url)
+  const targetUrl = 'https://my-urlshortnerworker.apiu.workers.dev' + url.pathname + url.search
+  const response = await fetch(targetUrl)
+
+  // Create a new response with the original response body and headers
+  const newResponse = new Response(response.body, response)
+
+  // Set the Access-Control-Allow-Origin header to allow cross-origin requests
+  newResponse.headers.set('Access-Control-Allow-Origin', '*')
+
+  return newResponse
+}
+
+            
+            
         </script>
         <div id="result"></div>
     </body>
