@@ -3,7 +3,7 @@
           <title>hello world!!!</title>
     </head>
     <body>
-    <h1>Hello World 12345<h1>
+    <h1>Hello World 12345</h1>
         
         <script>
 //             const kvNamespaceId = 'a9bc7b6f630442d088c3871543712b00'; // replace with your Namespace ID
@@ -62,6 +62,7 @@
 
 async function handleRequest(request) {
   const url = new URL(request.url)
+  console.log(url);
   const targetUrl = 'https://my-urlshortnerworker.apiu.workers.dev' + url.pathname + url.search
   const response = await fetch(targetUrl)
 
