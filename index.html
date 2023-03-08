@@ -27,24 +27,33 @@
 //   .then(value => console.log(value));
             
             
-const kvNamespaceId = '95b57889bce04c6e9029eb91cd16eca5'; // replace with your Namespace ID
-const kvKeyName = 'abc1'; // replace with the name of your key
-const workerUrl = 'https://testkv.apiu.workers.dev'; // replace with your Worker URL
-const resultDiv = document.getElementById('result'); // replace with the ID of the element to display the result
+// const kvNamespaceId = '95b57889bce04c6e9029eb91cd16eca5'; // replace with your Namespace ID
+// const kvKeyName = 'abc1'; // replace with the name of your key
+// const workerUrl = 'https://testkv.apiu.workers.dev'; // replace with your Worker URL
+// const resultDiv = document.getElementById('result'); // replace with the ID of the element to display the result
 
-fetch(`${workerUrl}/accounts/self/storage/kv/namespaces/${kvNamespaceId}/values/${kvKeyName}`)
-  .then(response => response.text())
-  .then(text => {
-    const data = JSON.parse(text);
-    alert(text);
-    console.log(text);
-    resultDiv.innerText = JSON.stringify(data, null, 2);
+// fetch(`${workerUrl}/accounts/self/storage/kv/namespaces/${kvNamespaceId}/values/${kvKeyName}`)
+//   .then(response => response.text())
+//   .then(text => {
+//     const data = JSON.parse(text);
+//     alert(text);
+//     console.log(text);
+//     resultDiv.innerText = JSON.stringify(data, null, 2);
+//   })
+//   .catch(error => {
+//     console.error(error);
+//     resultDiv.innerText = 'Error: ' + error.message;
+//   });
+
+fetch('https://my-urlshortnerworker.apiu.workers.dev/6ec096')
+  .then(response => response.json())
+  .then(result => {
+    // Do something with the result object
+    console.log(result);
+    // Update a DOM element with the result
+    document.getElementById('resultDiv').innerHTML = JSON.stringify(result);
   })
-  .catch(error => {
-    console.error(error);
-    resultDiv.innerText = 'Error: ' + error.message;
-  });
-
+  .catch(error => console.log('Error:', error));
 
 
         </script>
