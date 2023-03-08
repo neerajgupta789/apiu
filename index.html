@@ -64,6 +64,7 @@ async function handleRequest(request) {
   const url = new URL(request.url)
   console.log(url);
   const targetUrl = 'https://my-urlshortnerworker.apiu.workers.dev' + url.pathname + url.search
+  console.log(targetUrl);
   const response = await fetch(targetUrl)
 
   // Create a new response with the original response body and headers
